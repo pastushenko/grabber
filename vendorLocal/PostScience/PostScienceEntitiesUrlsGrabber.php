@@ -1,6 +1,9 @@
 <?php
+namespace vendorLocal\PostScience;
 
-class PostScienceEntitiesUrlsGrabber extends GrabberAbstract implements UrlsToEntitiesGrabberInterface
+use vendorLocal\UrlsToEntitiesGrabberInterface;
+
+class PostScienceEntitiesUrlsGrabber extends PostScienceGrabberAbstract implements UrlsToEntitiesGrabberInterface
 {
     /**
      * @return array
@@ -10,7 +13,7 @@ class PostScienceEntitiesUrlsGrabber extends GrabberAbstract implements UrlsToEn
         $this->selectCurrentDocument();
 
         $urls = array();
-        /** @var DomElement $a */
+        /** @var \DOMElement $a */
         foreach(pq('#project li .m-title a') as $a) {
             $urls[] = $a->getAttribute('href');
         }

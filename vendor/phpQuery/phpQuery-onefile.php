@@ -4595,7 +4595,7 @@ abstract class phpQuery {
 	 * to using this method.
 	 * $id can be retrived via getDocumentID() or getDocumentIDRef().
 	 *
-	 * @param unknown_type $id
+	 * @param $id
 	 */
 	public static function selectDocument($id) {
 		$id = self::getDocumentID($id);
@@ -4608,7 +4608,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @see phpQuery::selectDocument()
-	 * @param unknown_type $id
+	 * @param $id
 	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
 	 */
 	public static function getDocument($id = null) {

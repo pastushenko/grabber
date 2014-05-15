@@ -1,6 +1,7 @@
 <?php
+namespace vendorLocal\PostScience;
 
-class PostScienceEntitiesGrabber extends GrabberAbstract
+class PostScienceEntitiesGrabber extends PostScienceGrabberAbstract
 {
     /** @var string|null */
     private $title = null;
