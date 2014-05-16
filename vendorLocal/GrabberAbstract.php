@@ -26,8 +26,11 @@ abstract Class GrabberAbstract
 
     protected function selectCurrentDocument()
     {
-        \phpQuery::selectDocument($this->document);
+        if (\phpQuery::getDocument() != $this->document) {
+            \phpQuery::selectDocument($this->document);
+        }
     }
+
     /**
      * @param string $url
      * @return string html page
@@ -47,7 +50,7 @@ abstract Class GrabberAbstract
     }
 
     /**
-     * @param $selector
+     * @param string $selector
      * @return \DOMElement
      */
     protected function getFirstNode($selector) {
@@ -58,5 +61,36 @@ abstract Class GrabberAbstract
         }
 
         return null;
+    }
+
+    /**
+     * @param string $selector
+     * @param string $attributeName
+     * @return \DOMElement[]
+     */
+    protected function getElementsAttributeBySelector($selector, $attributeName)
+    {
+        $elements = $this->getElementsBySelector($selector);
+        $elementsAttribute = [];
+        foreach($elements as $element) {
+            $elementsAttribute[] = $element->getAttribute($attributeName);
+        }
+        return $elementsAttribute;
+    }
+
+    /**
+     * @param string $selector
+     * @return \DOMElement[]
+     */
+    private function getElementsBySelector($selector)
+    {
+        $this->selectCurrentDocument();
+
+        $elements = [];
+        /** @var \DOMElement $element */
+        foreach(pq($selector) as $element) {
+            $elements[] = $element;
+        }
+        return $elements;
     }
 }
