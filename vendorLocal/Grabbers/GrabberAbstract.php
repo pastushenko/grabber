@@ -1,5 +1,5 @@
 <?php
-namespace vendorLocal;
+namespace vendorLocal\Grabbers;
 
 abstract Class GrabberAbstract
 {

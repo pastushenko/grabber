@@ -1,7 +1,7 @@
 <?php
-namespace vendorLocal\PostScience;
+namespace vendorLocal\Grabbers\PostScience;
 
-class PostScienceEntitiesGrabber extends PostScienceGrabberAbstract
+class PostScienceEntity extends PostScienceGrabberAbstract
 {
     const TITLE_SELECTOR_PATTERN = '#b h1.p-title';
 

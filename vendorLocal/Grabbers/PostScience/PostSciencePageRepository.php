@@ -1,9 +1,12 @@
 <?php
-namespace vendorLocal\PostScience;
+namespace vendorLocal\Grabbers\PostScience;
 
-class PostScienceGrabberRepository
+use vendor\storage\Storage;
+use vendorLocal\Entity\Page;
+
+class PostSciencePageRepository extends Storage
 {
-    private $startPages = [
+    private $startPagesUrls = [
         'video' => 'http://postnauka.ru/video',
         'tv' => 'http://postnauka.ru/tv',
         'lectures' => 'http://postnauka.ru/lectures',
@@ -17,11 +20,27 @@ class PostScienceGrabberRepository
         'popular' => 'http://postnauka.ru/popular'
     ];
 
+    /** @var Page[] */
+    private $startPages = [];
+
+    protected function getCollectionName()
+    {
+        return 'postSciencePages';
+    }
+
     /**
-     * @return mixed
+     * @return Page[]
      */
     public function getStartPages()
     {
+        if (empty($startPages)) {
+            foreach($this->startPagesUrls as $category => $url) {
+                $page = new Page($url);
+                $page->setCategory($category);
+                $this->startPages[] = $page;
+            }
+        }
+
         return $this->startPages;
     }
 } 

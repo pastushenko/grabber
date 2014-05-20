@@ -1,7 +1,7 @@
 <?php
-namespace vendorLocal\PostScience;
+namespace vendorLocal\Grabbers\PostScience;
 
-use vendorLocal\GrabberAbstract as GeneralGrabberAbstract;
+use vendorLocal\Grabbers\GrabberAbstract as GeneralGrabberAbstract;
 
 class PostScienceGrabberAbstract extends GeneralGrabberAbstract
 {
